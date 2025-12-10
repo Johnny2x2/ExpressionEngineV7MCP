@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "expressionengine": {
+      "command": "node",
+      "args": [
+        "/absolute/path/to/ExpressionEngineV7MCP/build/index.js"
+      ],
+      "env": {
+        "EE_DB_HOST": "127.0.0.1",
+        "EE_DB_PORT": "3306",
+        "EE_DB_USER": "root",
+        "EE_DB_PASSWORD": "",
+        "EE_DB_DATABASE": "expressionengine",
+        "EE_BASE_PATH": "/absolute/path/to/devilbox/data/www/expressionengine"
+      }
+    }
+  }
+}

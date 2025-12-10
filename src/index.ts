@@ -10,10 +10,6 @@ import {
 import mysql from "mysql2/promise";
 import { promises as fs } from "fs";
 import path from "path";
-import { exec } from "child_process";
-import { promisify } from "util";
-
-const execAsync = promisify(exec);
 
 // Server configuration
 interface ServerConfig {
@@ -587,6 +583,10 @@ async function handleEntryAdd(args: any) {
     const fieldValues: any[] = [];
 
     for (const [fieldName, fieldValue] of Object.entries(custom_fields)) {
+      // Validate field name to prevent SQL injection (should be either numeric or alphanumeric with underscores)
+      if (!/^[a-zA-Z0-9_]+$/.test(fieldName)) {
+        throw new Error(`Invalid field name: ${fieldName}. Field names must contain only letters, numbers, and underscores.`);
+      }
       fieldUpdates.push(`field_${fieldName} = ?`);
       fieldValues.push(fieldValue);
     }
