@@ -1,0 +1,33 @@
+{
+  "name": "expressionengine-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server for Expression Engine V7 running in Devilbox Docker",
+  "type": "module",
+  "main": "build/index.js",
+  "bin": {
+    "expressionengine-mcp": "build/index.js"
+  },
+  "scripts": {
+    "build": "tsc && chmod +x build/index.js",
+    "watch": "tsc --watch",
+    "prepare": "npm run build",
+    "test": "node test-server.js",
+    "start": "node build/index.js"
+  },
+  "keywords": [
+    "mcp",
+    "expressionengine",
+    "docker",
+    "devilbox"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "mysql2": "^3.11.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "typescript": "^5.7.2"
+  }
+}
